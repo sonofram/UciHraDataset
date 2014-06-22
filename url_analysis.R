@@ -4,15 +4,15 @@ library(plyr)
 ################################################################################
 # Function: url_analysis 
 # Function store all urls required for running analysis on UCI HAR Dataset.
-# Function also return list of functions listed below and set sets url with data.table
-# value passed in
-# 
+# Function also return list of functions listed below and set sets url from url data.table
+# passed in as argument
+################## 
 # getUrl(url_type) - url_type should be passed in with below mentioned column names.
 # setUrl(url_type,url_val) - pass url_type and url_val. url_type should be column name mentioned below.
 # getAllUrls() - return data.table of urls
 # setAllUrls(dt_urls) - read all urls passed in dt_urls.
 # getUrlHeader() - return list of header values
-#
+##################
 # Argument: dt_urls - argument need to be data.table with url
 # dt_urls columns names c("url_features","url_activity","url_test_subject",
 #                       "url_test_metric","url_test_label",
@@ -32,18 +32,18 @@ library(plyr)
 url_analysis <- function(dt_urls = data.table()){
 
 #Test header names
-url_features <- "C:\\selva\\Data Science\\Data Cleansing\\Week2\\UCI HAR Dataset\\features.txt"  
-url_activity <- "C:\\selva\\Data Science\\Data Cleansing\\Week2\\UCI HAR Dataset\\activity_labels.txt"
+url_features <- NULL
+url_activity <- NULL
 
 #Testing file URL
-url_test_subject <- "C:\\selva\\Data Science\\Data Cleansing\\Week2\\UCI HAR Dataset\\test\\subject_test.txt"
-url_test_metric <- "C:\\selva\\Data Science\\Data Cleansing\\Week2\\UCI HAR Dataset\\test\\X_test.txt"
-url_test_label <- "C:\\selva\\Data Science\\Data Cleansing\\Week2\\UCI HAR Dataset\\test\\y_test.txt"
+url_test_subject <- NULL
+url_test_metric <- NULL
+url_test_label <- NULL
 
 #trianing file URL
-url_train_subject <- "C:\\selva\\Data Science\\Data Cleansing\\Week2\\UCI HAR Dataset\\train\\subject_train.txt"
-url_train_metric <- "C:\\selva\\Data Science\\Data Cleansing\\Week2\\UCI HAR Dataset\\train\\X_train.txt"
-url_train_label <- "C:\\selva\\Data Science\\Data Cleansing\\Week2\\UCI HAR Dataset\\train\\y_train.txt"
+url_train_subject <- NULL
+url_train_metric <- NULL
+url_train_label <- NULL
         
 #unknown URL
 url_unknown <- ""
