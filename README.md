@@ -26,18 +26,23 @@ Step#1 List of all file paths related for running analysis
 ```{r}
 
 #Example of Header & activity master
-url_features <- "C:\\UCI HAR Dataset\\features.txt"  
-url_activity <- "C:\\UCI HAR Dataset\\activity_labels.txt"
+working_dir  <- paste(gsub("/","//",getwd()),"//",sep="")       
+testing_dir  <- paste(working_dir,"//test//",sep="")
+training_dir <- paste(working_dir,"//train//",sep="")
+
+#Test header names
+url_features <- paste(working_dir,"features.txt",sep="")
+url_activity <- paste(working_dir,"activity_labels.txt",sep="")
 
 #Testing file URL
-url_test_subject <- "C:\\UCI HAR Dataset\\test\\subject_test.txt"
-url_test_metric <- "C:\\UCI HAR Dataset\\test\\X_test.txt"
-url_test_label <- "C:\\UCI HAR Dataset\\test\\y_test.txt"
+url_test_subject <- paste(testing_dir,"subject_test.txt",sep="")
+url_test_metric <- paste(testing_dir,"X_test.txt",sep="")
+url_test_label <- paste(testing_dir,"y_test.txt",sep="")
 
 #trianing file URL
-url_train_subject <- "C:\\UCI HAR Dataset\\train\\subject_train.txt"
-url_train_metric <- "C:\\UCI HAR Dataset\\train\\X_train.txt"
-url_train_label <- "C:\\UCI HAR Dataset\\train\\y_train.txt""
+url_train_subject <- paste(training_dir,"subject_train.txt",sep="")
+url_train_metric <- paste(training_dir,"X_train.txt",sep="")
+url_train_label <- paste(training_dir,"y_train.txt",sep="")
 
 ```
 
@@ -46,11 +51,8 @@ Step#2 Store paths of all files related for running analysis
 
 ```{r}
 
-dt <- data.table(url_features,url_activity,
-                 url_test_subject,url_test_metric,url_test_label,
-                 url_train_subject,url_train_metric,url_train_label)
-                 
-fnc <- url_analysis(dt)
+         
+fnc <- url_analysis()
 
 ```
 

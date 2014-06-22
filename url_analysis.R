@@ -4,19 +4,25 @@ library(plyr)
 ################################################################################
 # Function: url_analysis 
 # Function store all urls required for running analysis on UCI HAR Dataset.
-# Function also return list of functions listed below and set sets url from url data.table
-# passed in as argument
+# Function also return list of functions listed below. function will by default
+# Base working Dir - getwd() to search for data provided by UCI HAR Dataset
+# Training Dir - getwd()/train to search for training data
+# Testing Dir - getwd()/test to search for testing data.
 ################## 
 # getUrl(url_type) - url_type should be passed in with below mentioned column names.
-# setUrl(url_type,url_val) - pass url_type and url_val. url_type should be column name mentioned below.
+# setUrl(url_type,url_val) - Set url_value by passing url_type and url_val. 
+#                            url_type will be column names mentioned below
+#                            url_val will be value for url.
 # getAllUrls() - return data.table of urls
-# setAllUrls(dt_urls) - read all urls passed in dt_urls.
-# getUrlHeader() - return list of header values
+# setAllUrls(dt_urls) - read all urls passed in dt_urls. dt_urls should be data.table with 
+#                       column name mentioned below
+# getUrlHeader() - return list of header values. Will return below listed column names.
 ##################
-# Argument: dt_urls - argument need to be data.table with url
-# dt_urls columns names c("url_features","url_activity","url_test_subject",
+# columns names - to use while calling setUrl, getUrl, getAllUrls or setAllUrls functions :
+#                       c("url_features","url_activity","url_test_subject",
 #                       "url_test_metric","url_test_label",
 #                       "url_train_subject","url_train_metric","url_train_label")
+##################
 # Details of value stored in dt_urls
 # column url_features value - Url for features.txt file.
 # column url_activity value - Url for activity_labels.txt file.
@@ -29,21 +35,25 @@ library(plyr)
 #
 ################################################################################
 
-url_analysis <- function(dt_urls = data.table()){
+url_analysis <- function(){
+
+working_dir  <- paste(gsub("/","//",getwd()),"//",sep="")       
+testing_dir  <- paste(working_dir,"//test//",sep="")
+training_dir <- paste(working_dir,"//train//",sep="")
 
 #Test header names
-url_features <- NULL
-url_activity <- NULL
+url_features <- paste(working_dir,"features.txt",sep="")
+url_activity <- paste(working_dir,"activity_labels.txt",sep="")
 
 #Testing file URL
-url_test_subject <- NULL
-url_test_metric <- NULL
-url_test_label <- NULL
+url_test_subject <- paste(testing_dir,"subject_test.txt",sep="")
+url_test_metric <- paste(testing_dir,"X_test.txt",sep="")
+url_test_label <- paste(testing_dir,"y_test.txt",sep="")
 
 #trianing file URL
-url_train_subject <- NULL
-url_train_metric <- NULL
-url_train_label <- NULL
+url_train_subject <- paste(training_dir,"subject_train.txt",sep="")
+url_train_metric <- paste(training_dir,"X_train.txt",sep="")
+url_train_label <- paste(training_dir,"y_train.txt",sep="")
         
 #unknown URL
 url_unknown <- ""
@@ -145,9 +155,7 @@ getUrlHeader <- function(){
         url_header    
 }
 
-##Extracing data.table with url details
-##setting it to variables.
-setAllUrls(dt_urls)
+
 
 list(getUrl=getUrl,setUrl=setUrl,
      getAllUrls=getAllUrls,setAllUrls=setAllUrls,
