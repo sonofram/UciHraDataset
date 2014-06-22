@@ -1,9 +1,12 @@
 README - UCI HAR Dataset Analysis
 ========================================================
 
-Two R script created
-url_analysis.R - Program that stores all paths of all files required
-run_analysis.R - Program that generates Analysis.
+Two R scripts created
+
+url_analysis.R - Program that stores all paths of all files required. Input will be data.table 
+will all file paths. Details provided in url_ananlysis.R file's comments. 
+
+run_analysis.R - Program that generates Analysis
 
 Step#Initiation Load Rscripts
 -----
@@ -34,7 +37,7 @@ url_test_label <- "C:\\UCI HAR Dataset\\test\\y_test.txt"
 #trianing file URL
 url_train_subject <- "C:\\UCI HAR Dataset\\train\\subject_train.txt"
 url_train_metric <- "C:\\UCI HAR Dataset\\train\\X_train.txt"
-url_train_label <- "C:\\UCI HAR Dataset\\train\\y_train.txt
+url_train_label <- "C:\\UCI HAR Dataset\\train\\y_train.txt""
 
 ```
 
