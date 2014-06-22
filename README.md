@@ -3,10 +3,18 @@ README - UCI HAR Dataset Analysis
 
 Two R scripts created
 
-url_analysis.R - Program that stores all paths of all files required. Input will be data.table 
-will all file paths. Details provided in url_ananlysis.R file's comments. 
+url_analysis.R - Program that stores all paths of all files required.  
+--------------
+Input will be data.table will all file paths. Details provided in url_ananlysis.R file's comments.
+
+working direcotry: Current working directory will be used as base directory to get features.txt and activity_labels.txt.
+
+training direcotry: getwd()/train. All training files will be searched here
+
+testing directory: getwd()/testing. All testing files will be searched here.
 
 run_analysis.R - Program that generates Analysis
+--------------
 
 Step#Initiation Load Rscripts
 -----
